@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Present Tense & Subject-Verb Agreement</title>
+    <style>
+        :root {
+            /* Intermediate section theme variables */
+            --intermediate-primary: #F39C12; /* Amber */
+            --intermediate-primary-dark: #D35400; /* Burnt Orange */
+            --intermediate-secondary: #3498db; /* Blue accent */
+            --intermediate-card-bg: #FFF4E3; /* Very light amber background */
+            --intermediate-icon-bg: #FFECD0; /* Light warm beige for icons */
+            --week-header-color: #E67E22; /* Slightly darker amber for headers */
+            
+            /* Additional variables for consistency */
+            --text-dark: #333;
+            --text-light: #fff;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --border-radius: 8px;
+            --nav-bg: #1B263B; /* Dark blue for navigation */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--nav-bg);
+            color: var(--text-light);
+            padding: var(--spacing-md);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: var(--spacing-sm);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: var(--spacing-md);
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+        
+        .lesson-header {
+            background-color: var(--week-header-color);
+            color: var(--text-light);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin-bottom: 0;
+        }
+        
+        .lesson-header h1 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+        }
+        
+        .lesson-container {
+            background-color: var(--intermediate-card-bg);
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: var(--spacing-lg);
+        }
+        
+        .activity-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--intermediate-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .activity-tab {
+            padding: var(--spacing-md);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            opacity: 0.7;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .activity-tab.active {
+            opacity: 1;
+            border-bottom: 3px solid var(--intermediate-primary-dark);
+            color: var(--intermediate-primary-dark);
+        }
+        
+        .activity-tab:hover {
+            opacity: 1;
+        }
+        
+        .activity-content {
+            display: none;
+        }
+        
+        .activity-content.active {
+            display: block;
+        }
+        
+        .activity-intro {
+            background-color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            border-left: 4px solid var(--intermediate-primary);
+        }
+        
+        .question-container {
+            background-color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .option {
+            padding: var(--spacing-md);
+            background-color: var(--intermediate-icon-bg);
+            border: 2px solid var(--intermediate-icon-bg);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .option:hover {
+            border-color: var(--intermediate-primary);
+        }
+        
+        .option.selected {
+            border-color: var(--intermediate-primary);
+            background-color: var(--intermediate-primary);
+            color: white;
+        }
+        
+        .option.correct {
+            border-color: #27ae60;
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .option.incorrect {
+            border-color: #e74c3c;
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .feedback {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            display: none;
+        }
+        
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .feedback-explanation {
+            margin-top: var(--spacing-sm);
+            font-style: italic;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-md);
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-next {
+            background-color: var(--intermediate-secondary);
+            color: white;
+        }
+        
+        .btn-next:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-check {
+            background-color: var(--intermediate-primary);
+            color: white;
+        }
+        
+        .btn-check:hover {
+            background-color: var(--intermediate-primary-dark);
+        }
+        
+        .btn-disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .progress-container {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--intermediate-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .timer {
+            background-color: var(--nav-bg);
+            color: white;
+            padding: 0.5rem 2rem;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .results-container {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background-color: white;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+        
+        .results-container h2 {
+            color: var(--intermediate-primary-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--intermediate-primary-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .explanation-box {
+            background-color: var(--intermediate-icon-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-md);
+        }
+        
+        .explanation-box h3 {
+            color: var(--intermediate-primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: var(--spacing-md) 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background-color: var(--week-header-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        
+        .highlight {
+            background-color: #fffde7;
+            padding: 0 3px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .error {
+            color: #e74c3c;
+            text-decoration: line-through;
+        }
+        
+        .flashcard {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            border: 2px solid #e0e0e0;
+        }
+        
+        .flashcard-sentence {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .flashcard-options {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+        }
+        
+        .flashcard-option {
+            background-color: var(--intermediate-icon-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .flashcard-option:hover {
+            background-color: var(--intermediate-primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <!-- You can replace with your actual logo -->
+                <span>ESL Teacher</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="week1.html" class="active">Week 1</a></li>
+                    <li><a href="week2.html">Week 2</a></li>
+                    <li><a href="week3.html">Week 3</a></li>
+                    <li><a href="week4.html">Week 4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="lesson-header">
+            <h1>Week 1 Tuesday: Present Tense & Subject-Verb Agreement</h1>
+        </div>
+        
+        <div class="lesson-container">
+            <div class="activity-tabs">
+                <button class="activity-tab active" data-tab="activity1">Present Tense Errors Review</button>
+                <button class="activity-tab" data-tab="activity2">I have vs. He/She/It has Drill</button>
+            </div>
+            
+            <!-- Activity 1: Present Tense Errors Review -->
+            <div id="activity1" class="activity-content active">
+                <div class="activity-intro">
+                    <h2>Correcting Common Present Tense Errors</h2>
+                    <p>You have <strong>60 seconds</strong> to answer as many questions as possible. Click the correct version of each sentence. Green means correct, red means incorrect!</p>
+                </div>
+                
+                <div class="timer-container">
+                    <div class="timer" id="pt-timer">01:00</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+                
+                <div id="questions-container"></div>
+                
+                <div class="results-container" id="results">
+                    <h2>Time's Up!</h2>
+                    <p>Let's see how many questions you answered correctly in 60 seconds.</p>
+                    <div class="score">Score: <span id="score">0</span> correct answers</div>
+                    <div class="score">Speed: <span id="speed">0</span> questions per minute</div>
+                    
+                    <div class="explanation-box">
+                        <h3>Common Present Tense Errors for Portuguese Speakers</h3>
+                        <ul>
+                            <li><strong>Omitting subject pronouns:</strong> Portuguese doesn't always require subject pronouns, but English does.</li>
+                            <li><strong>Subject-verb agreement:</strong> Remembering that "I/you/we/they" use the base form, while "he/she/it" adds "-s".</li>
+                            <li><strong>Present continuous vs. simple present:</strong> Using "I send now" when "I am sending now" is needed.</li>
+                            <li><strong>Auxiliary verbs:</strong> Using "I no like" instead of "I don't like" or "I not have" instead of "I don't have".</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="btn btn-check" onclick="resetActivity('activity1')">Try Again</button>
+                </div>
+            </div>
+            
+            <!-- Activity 2: I have vs. He/She/It has Drill -->
+            <div id="activity2" class="activity-content">
+                <div class="activity-intro">
+                    <h2>I have vs. He/She/It has - Flash Card Drill</h2>
+                    <p>This timed activity focuses on correct subject-verb agreement with the verb "have". You'll see sentences with blanks - select the correct form of the verb as quickly as you can!</p>
+                </div>
+                
+                <div class="timer-container">
+                    <div class="timer" id="timer">00:30</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="flashcard-progress" style="width: 0%"></div>
+                </div>
+                
+                <div id="flashcard-container">
+                    <div class="flashcard">
+                        <div class="flashcard-sentence" id="flashcard-sentence"></div>
+                        <div class="flashcard-options">
+                            <div class="flashcard-option" data-value="have">have</div>
+                            <div class="flashcard-option" data-value="has">has</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feedback" id="flashcard-feedback"></div>
+                
+                <div class="results-container" id="flashcard-results">
+                    <h2>Drill Complete!</h2>
+                    <p>You've completed the "have vs. has" drill.</p>
+                    <div class="score">Score: <span id="flashcard-score">0</span>/10</div>
+                    
+                    <div class="explanation-box">
+                        <h3>Rules for "Have" vs. "Has"</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Verb Form</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>I</td>
+                                        <td>have</td>
+                                        <td>I <strong>have</strong> a book.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>You</td>
+                                        <td>have</td>
+                                        <td>You <strong>have</strong> a car.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>He/She/It</td>
+                                        <td>has</td>
+                                        <td>He <strong>has</strong> a dog.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>We</td>
+                                        <td>have</td>
+                                        <td>We <strong>have</strong> time.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>They</td>
+                                        <td>have</td>
+                                        <td>They <strong>have</strong> dinner.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Remember:</strong> In the present tense, only third-person singular subjects (he, she, it) use "has". All other subjects use "have".</p>
+                    </div>
+                    
+                    <button class="btn btn-check" onclick="resetActivity('activity2')">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.activity-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.activity-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.activity-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // Activity 1: Present Tense Errors Review
+        const presentTenseQuestions = [
+            // Original 8 questions
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "I send now the email to you.",
+                    "I am sending the email to you now."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "I already has finished my work.",
+                    "I have already finished my work."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "She no like to study English.",
+                    "She doesn't like to study English."
+                ],
+                correct: 1
+            },
+            {
+                question: "Find the correct sentence:",
+                options: [
+                    "I has many time without to payment.",
+                    "I have been a long time without payment."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: [
+                    "My brother work in São Paulo.",
+                    "My brother works in São Paulo."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct sentence:",
+                options: [
+                    "We needs to practice more.",
+                    "We need to practice more."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "I not forget to send the email.",
+                    "I don't forget to send the email."
+                ],
+                correct: 1
+            },
+            
+            // Additional 42 questions to reach approximately 50
+            {
+                question: "Which is correct?",
+                options: [
+                    "She have three children.",
+                    "She has three children."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct sentence:",
+                options: [
+                    "They goes to the beach every weekend.",
+                    "They go to the beach every weekend."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "He don't understand the question.",
+                    "He doesn't understand the question."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct option:",
+                options: [
+                    "The students is learning English.",
+                    "The students are learning English."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "I no can speak Chinese.",
+                    "I can't speak Chinese."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct form:",
+                options: [
+                    "My friend play soccer very well.",
+                    "My friend plays soccer very well."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "We is going to the movies tonight.",
+                    "We are going to the movies tonight."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct option:",
+                options: [
+                    "The meeting finish at 5 PM.",
+                    "The meeting finishes at 5 PM."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "I has to study for my exam.",
+                    "I have to study for my exam."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct sentence:",
+                options: [
+                    "She not like coffee.",
+                    "She doesn't like coffee."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "The car need new tires.",
+                    "The car needs new tires."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct form:",
+                options: [
+                    "They has a beautiful house.",
+                    "They have a beautiful house."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "I goes to work by bus.",
+                    "I go to work by bus."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct option:",
+                options: [
+                    "He work on weekends.",
+                    "He works on weekends."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "We watches TV every night.",
+                    "We watch TV every night."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: [
+                    "The dog barks when strangers comes.",
+                    "The dog barks when strangers come."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "I arriving now at the airport.",
+                    "I am arriving now at the airport."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct form:",
+                options: [
+                    "She speak three languages.",
+                    "She speaks three languages."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "The children plays in the park.",
+                    "The children play in the park."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct option:",
+                options: [
+                    "My parents lives in Rio.",
+                    "My parents live in Rio."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "It not work properly.",
+                    "It doesn't work properly."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct sentence:",
+                options: [
+                    "The class start at 9 AM.",
+                    "The class starts at 9 AM."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "I forgets my keys sometimes.",
+                    "I forget my keys sometimes."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct form:",
+                options: [
+                    "We has finished the project.",
+                    "We have finished the project."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "She always arrive late.",
+                    "She always arrives late."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct option:",
+                options: [
+                    "The teacher don't explain well.",
+                    "The teacher doesn't explain well."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "They sells fresh fruit.",
+                    "They sell fresh fruit."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: [
+                    "My sister live in London.",
+                    "My sister lives in London."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "I no understand the problem.",
+                    "I don't understand the problem."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct form:",
+                options: [
+                    "The restaurant close at midnight.",
+                    "The restaurant closes at midnight."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "She don't know the answer.",
+                    "She doesn't know the answer."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct option:",
+                options: [
+                    "He have a meeting tomorrow.",
+                    "He has a meeting tomorrow."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "We know now the truth.",
+                    "We now know the truth."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct sentence:",
+                options: [
+                    "I has been waiting for hours.",
+                    "I have been waiting for hours."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "They needs more time.",
+                    "They need more time."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct form:",
+                options: [
+                    "He work hard every day.",
+                    "He works hard every day."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "The cars is expensive in Brazil.",
+                    "The cars are expensive in Brazil."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct option:",
+                options: [
+                    "I already finished the homework.",
+                    "I have already finished the homework."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "She study English every day.",
+                    "She studies English every day."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: [
+                    "We is ready to begin.",
+                    "We are ready to begin."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "I no like vegetables.",
+                    "I don't like vegetables."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct form:",
+                options: [
+                    "The office opens in 9:00 AM.",
+                    "The office opens at 9:00 AM."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "The film begin at 8 PM.",
+                    "The film begins at 8 PM."
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct option:",
+                options: [
+                    "I working now on a new project.",
+                    "I am working now on a new project."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which sentence is correct?",
+                options: [
+                    "She live with her parents.",
+                    "She lives with her parents."
+                ],
+                correct: 1
+            },
+            {
+                question: "Select the correct sentence:",
+                options: [
+                    "We goes to church on Sundays.",
+                    "We go to church on Sundays."
+                ],
+                correct: 1
+            },
+            {
+                question: "Which is correct?",
+                options: [
+                    "The bus arrive in 10 minutes.",
+                    "The bus arrives in 10 minutes."
+                ],
+                correct: 1
+            }
+        ];
+        
+        let questionsAnswered = 0;
+        let score = 0;
+        let ptTimer;
+        let ptTimeLeft = 60;
+        let usedQuestionIndices = [];
+        
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        
+        function getRandomQuestion() {
+            // If we've used all questions or almost all, reset the used indices
+            if (usedQuestionIndices.length >= presentTenseQuestions.length - 5) {
+                usedQuestionIndices = [];
+            }
+            
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * presentTenseQuestions.length);
+            } while (usedQuestionIndices.includes(randomIndex));
+            
+            usedQuestionIndices.push(randomIndex);
+            return presentTenseQuestions[randomIndex];
+        }
+        
+        function displayQuestion() {
+            const questionsContainer = document.getElementById('questions-container');
+            const question = getRandomQuestion();
+            
+            // Create question element
+            const questionElement = document.createElement('div');
+            questionElement.className = 'question-container';
+            questionElement.innerHTML = `
+                <div class="question">${question.question}</div>
+                <div class="options">
+                    <div class="option" data-index="0">${question.options[0]}</div>
+                    <div class="option" data-index="1">${question.options[1]}</div>
+                </div>
+            `;
+            
+            questionsContainer.innerHTML = '';
+            questionsContainer.appendChild(questionElement);
+            
+            // Update progress bar - show number of questions answered
+            document.querySelector('.progress-bar').style.width = `${(ptTimeLeft / 60) * 100}%`;
+            
+            // Add event listeners
+            const options = questionElement.querySelectorAll('.option');
+            
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedIndex = parseInt(this.dataset.index);
+                    const correct = selectedIndex === question.correct;
+                    
+                    // Mark option as correct or incorrect
+                    if (correct) {
+                        this.classList.add('correct');
+                        score++;
+                    } else {
+                        this.classList.add('incorrect');
+                        options[question.correct].classList.add('correct');
+                    }
+                    
+                    questionsAnswered++;
+                    
+                    // Brief pause before next question
+                    setTimeout(() => {
+                        if (ptTimeLeft > 0) {
+                            displayQuestion();
+                        }
+                    }, 300);
+                });
+            });
+        }
+        
+        function startPresentTenseTimer() {
+            clearInterval(ptTimer);
+            ptTimeLeft = 60;
+            updatePTTimerDisplay();
+            
+            ptTimer = setInterval(() => {
+                ptTimeLeft--;
+                updatePTTimerDisplay();
+                
+                // Update progress bar
+                document.querySelector('.progress-bar').style.width = `${(ptTimeLeft / 60) * 100}%`;
+                
+                if (ptTimeLeft <= 0) {
+                    clearInterval(ptTimer);
+                    endPresentTenseGame();
+                }
+            }, 1000);
+        }
+        
+        function updatePTTimerDisplay() {
+            const minutes = Math.floor(ptTimeLeft / 60);
+            const seconds = ptTimeLeft % 60;
+            document.getElementById('pt-timer').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function endPresentTenseGame() {
+            // Show results
+            document.getElementById('questions-container').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('score').textContent = score;
+            document.getElementById('speed').textContent = questionsAnswered;
+            document.querySelector('.progress-bar').style.width = '100%';
+        }
+        
+        function initPresentTenseActivity() {
+            // Reset variables
+            questionsAnswered = 0;
+            score = 0;
+            usedQuestionIndices = [];
+            
+            // Reset display
+            document.getElementById('questions-container').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            
+            // Start timer and display first question
+            startPresentTenseTimer();
+            displayQuestion();
+        }
+        
+        // Initialize Activity 1
+        initPresentTenseActivity();
+        
+        // Activity 2: Flash Card Drill (I have vs. He/She/It has)
+        const flashcardSentences = [
+            // Original 10 questions
+            {
+                sentence: "I ____ a new car.",
+                correct: "have"
+            },
+            {
+                sentence: "She ____ two brothers.",
+                correct: "has"
+            },
+            {
+                sentence: "They ____ a meeting tomorrow.",
+                correct: "have"
+            },
+            {
+                sentence: "The dog ____ a long tail.",
+                correct: "has"
+            },
+            {
+                sentence: "We ____ plenty of time.",
+                correct: "have"
+            },
+            {
+                sentence: "It ____ four wheels.",
+                correct: "has"
+            },
+            {
+                sentence: "You ____ beautiful eyes.",
+                correct: "have"
+            },
+            {
+                sentence: "He ____ a good job.",
+                correct: "has"
+            },
+            {
+                sentence: "My friend ____ a new phone.",
+                correct: "has"
+            },
+            {
+                sentence: "I ____ an idea.",
+                correct: "have"
+            },
+            
+            // Additional 40 flashcards to reach approximately 50
+            {
+                sentence: "The students ____ a new teacher.",
+                correct: "have"
+            },
+            {
+                sentence: "The cat ____ green eyes.",
+                correct: "has"
+            },
+            {
+                sentence: "My parents ____ a large house.",
+                correct: "have"
+            },
+            {
+                sentence: "Paulo ____ three sisters.",
+                correct: "has"
+            },
+            {
+                sentence: "We ____ a class today.",
+                correct: "have"
+            },
+            {
+                sentence: "The company ____ many employees.",
+                correct: "has"
+            },
+            {
+                sentence: "I ____ a busy schedule.",
+                correct: "have"
+            },
+            {
+                sentence: "The phone ____ a broken screen.",
+                correct: "has"
+            },
+            {
+                sentence: "You ____ a good point.",
+                correct: "have"
+            },
+            {
+                sentence: "She ____ a new job.",
+                correct: "has"
+            },
+            {
+                sentence: "They ____ two cars.",
+                correct: "have"
+            },
+            {
+                sentence: "The building ____ ten floors.",
+                correct: "has"
+            },
+            {
+                sentence: "We ____ a problem.",
+                correct: "have"
+            },
+            {
+                sentence: "My brother ____ a motorcycle.",
+                correct: "has"
+            },
+            {
+                sentence: "I ____ many friends in Brazil.",
+                correct: "have"
+            },
+            {
+                sentence: "The movie ____ subtitles.",
+                correct: "has"
+            },
+            {
+                sentence: "You ____ a new haircut.",
+                correct: "have"
+            },
+            {
+                sentence: "The restaurant ____ good reviews.",
+                correct: "has"
+            },
+            {
+                sentence: "They ____ a reservation.",
+                correct: "have"
+            },
+            {
+                sentence: "The team ____ fifteen players.",
+                correct: "has"
+            },
+            {
+                sentence: "We ____ tickets for the concert.",
+                correct: "have"
+            },
+            {
+                sentence: "The city ____ many tourists.",
+                correct: "has"
+            },
+            {
+                sentence: "I ____ permission to leave early.",
+                correct: "have"
+            },
+            {
+                sentence: "São Paulo ____ a large population.",
+                correct: "has"
+            },
+            {
+                sentence: "You ____ a meeting at 3 PM.",
+                correct: "have"
+            },
+            {
+                sentence: "The tree ____ beautiful flowers.",
+                correct: "has"
+            },
+            {
+                sentence: "They ____ a swimming pool.",
+                correct: "have"
+            },
+            {
+                sentence: "My computer ____ a virus.",
+                correct: "has"
+            },
+            {
+                sentence: "We ____ a test tomorrow.",
+                correct: "have"
+            },
+            {
+                sentence: "The hotel ____ free Wi-Fi.",
+                correct: "has"
+            },
+            {
+                sentence: "You ____ a good chance of winning.",
+                correct: "have"
+            },
+            {
+                sentence: "Each student ____ a textbook.",
+                correct: "has"
+            },
+            {
+                sentence: "I ____ some questions.",
+                correct: "have"
+            },
+            {
+                sentence: "The office ____ air conditioning.",
+                correct: "has"
+            },
+            {
+                sentence: "We ____ a holiday next week.",
+                correct: "have"
+            },
+            {
+                sentence: "The coffee ____ a strong flavor.",
+                correct: "has"
+            },
+            {
+                sentence: "They ____ a big family.",
+                correct: "have"
+            },
+            {
+                sentence: "Brazil ____ beautiful beaches.",
+                correct: "has"
+            },
+            {
+                sentence: "I ____ an appointment today.",
+                correct: "have"
+            },
+            {
+                sentence: "The house ____ three bedrooms.",
+                correct: "has"
+            }
+        ];
+        
+        let currentFlashcard = 0;
+        let flashcardScore = 0;
+        let timeLeft = 30; // 30 seconds per round
+        let timer;
+        let flashcardUsedIndices = [];
+        
+        function getRandomFlashcard() {
+            // If we've used all flashcards or almost all, reset the used indices
+            if (flashcardUsedIndices.length >= flashcardSentences.length - 5) {
+                flashcardUsedIndices = [];
+            }
+            
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * flashcardSentences.length);
+            } while (flashcardUsedIndices.includes(randomIndex));
+            
+            flashcardUsedIndices.push(randomIndex);
+            return flashcardSentences[randomIndex];
+        }
+        
+        function displayFlashcard() {
+            const flashcard = getRandomFlashcard();
+            const sentenceElement = document.getElementById('flashcard-sentence');
+            sentenceElement.textContent = flashcard.sentence;
+            
+            // Update progress
+            document.getElementById('flashcard-progress').style.width = `${(timeLeft / 30) * 100}%`;
+            
+            // Reset feedback
+            document.getElementById('flashcard-feedback').className = 'feedback';
+            document.getElementById('flashcard-feedback').innerHTML = '';
+            
+            // Store the correct answer on the flashcard element for later validation
+            sentenceElement.dataset.correct = flashcard.correct;
+        }
+        
+        function startFlashcardTimer() {
+            clearInterval(timer);
+            timeLeft = 30;
+            updateTimerDisplay();
+            
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    endFlashcardGame();
+                }
+            }, 1000);
+        }
+        
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function checkFlashcardAnswer(answer) {
+            const correctAnswer = document.getElementById('flashcard-sentence').dataset.correct;
+            const feedback = document.getElementById('flashcard-feedback');
+            
+            if (answer === correctAnswer) {
+                flashcardScore++;
+                feedback.className = 'feedback correct';
+                feedback.innerHTML = '<p>✓ Correct!</p>';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.innerHTML = `<p>✗ Incorrect! The correct answer is "${correctAnswer}".</p>`;
+            }
+            
+            // Move to next flashcard after a short delay
+            setTimeout(() => {
+                currentFlashcard++;
+                displayFlashcard();
+            }, 700);
+        }
+        
+        function endFlashcardGame() {
+            clearInterval(timer);
+            
+            // Hide flashcard container
+            document.getElementById('flashcard-container').style.display = 'none';
+            document.getElementById('flashcard-feedback').style.display = 'none';
+            document.getElementById('timer').parentElement.style.display = 'none';
+            
+            // Show results
+            document.getElementById('flashcard-results').style.display = 'block';
+            document.getElementById('flashcard-score').textContent = flashcardScore;
+            document.getElementById('flashcard-progress').style.width = '100%';
+        }
+        
+        function initFlashcardActivity() {
+            // Reset variables
+            currentFlashcard = 0;
+            flashcardScore = 0;
+            flashcardUsedIndices = [];
+            
+            // Reset display
+            document.getElementById('flashcard-container').style.display = 'block';
+            document.getElementById('flashcard-feedback').style.display = 'block';
+            document.getElementById('flashcard-feedback').className = 'feedback';
+            document.getElementById('flashcard-feedback').innerHTML = '';
+            document.getElementById('timer').parentElement.style.display = 'flex';
+            document.getElementById('flashcard-results').style.display = 'none';
+            
+            // Add event listeners to flashcard options
+            document.querySelectorAll('.flashcard-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    checkFlashcardAnswer(this.dataset.value);
+                });
+            });
+            
+            // Initialize first flashcard and timer
+            displayFlashcard();
+            startFlashcardTimer();
+        }
+        
+        // Event listener for tab switching to initialize activities
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize first activity
+            initPresentTenseActivity();
+            
+            // Add event listeners for tabs
+            document.querySelectorAll('.activity-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    if (tab.dataset.tab === 'activity2') {
+                        // If switching to second activity and it hasn't been initialized
+                        if (!document.getElementById('flashcard-results').style.display || 
+                            document.getElementById('flashcard-results').style.display === 'none') {
+                            initFlashcardActivity();
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Function to reset activities
+        function resetActivity(activityId) {
+            if (activityId === 'activity1') {
+                initPresentTenseActivity();
+            } else if (activityId === 'activity2') {
+                currentFlashcard = 0;
+                flashcardScore = 0;
+                document.getElementById('flashcard-container').style.display = 'block';
+                document.getElementById('flashcard-feedback').style.display = 'block';
+                document.getElementById('timer').parentElement.style.display = 'flex';
+                document.getElementById('flashcard-results').style.display = 'none';
+                displayFlashcard();
+                startFlashcardTimer();
+            }
+        }
+        
+        // Save activity completion to localStorage
+        function markActivityComplete(activityId) {
+            let completedActivities = JSON.parse(localStorage.getItem('completedActivities')) || [];
+            if (!completedActivities.includes(activityId)) {
+                completedActivities.push(activityId);
+                localStorage.setItem('completedActivities', JSON.stringify(completedActivities));
+            }
+        }
+    </script>
+</body>
+</html>

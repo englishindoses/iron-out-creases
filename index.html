@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESL Lesson Plan for Brazilian Student</title>
+    <style>
+        :root {
+            /* Intermediate section theme variables */
+            --intermediate-primary: #F39C12; /* Amber */
+            --intermediate-primary-dark: #D35400; /* Burnt Orange */
+            --intermediate-secondary: #3498db; /* Blue accent */
+            --intermediate-card-bg: #FFF4E3; /* Very light amber background */
+            --intermediate-icon-bg: #FFECD0; /* Light warm beige for icons */
+            
+            /* Additional variables for consistency */
+            --text-dark: #333;
+            --text-light: #fff;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #1B263B;
+            color: var(--text-light);
+            padding: var(--spacing-md);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: var(--spacing-sm);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: var(--spacing-md);
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background-color: var(--intermediate-primary-dark);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+        
+        .intro-section {
+            background-color: var(--intermediate-card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        h1 {
+            color: var(--intermediate-primary-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        h2 {
+            color: var(--intermediate-primary);
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+            border-bottom: 2px solid var(--intermediate-primary);
+            padding-bottom: var(--spacing-sm);
+        }
+        
+        h3 {
+            color: var(--intermediate-primary-dark);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .week-card {
+            background-color: var(--intermediate-card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .week-header {
+            background-color: #E67E22;
+            color: var(--text-light);
+            padding: var(--spacing-md) var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .week-header h3 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+            letter-spacing: 0.5px;
+        }
+        
+        .week-content {
+            padding: var(--spacing-md);
+        }
+        
+        .lesson-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+        
+        .lesson-info {
+            flex-grow: 1;
+        }
+        
+        .lesson-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        
+        .lesson-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .lesson-checkbox {
+            display: flex;
+            align-items: center;
+        }
+        
+        .custom-checkbox {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid var(--intermediate-primary);
+            border-radius: 4px;
+            margin-right: var(--spacing-sm);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .custom-checkbox.checked {
+            background-color: var(--intermediate-primary);
+        }
+        
+        .custom-checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            top: 0;
+            left: 4px;
+        }
+        
+        .view-lesson-btn {
+            display: inline-block;
+            background-color: var(--intermediate-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            margin-left: var(--spacing-sm);
+        }
+        
+        .view-lesson-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .completed-badge {
+            background-color: var(--intermediate-primary);
+            color: white;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            margin-left: var(--spacing-sm);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: var(--spacing-md);
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.25rem;
+            }
+            
+            .lesson-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .lesson-checkbox {
+                margin-top: var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <!-- You can replace with your actual logo -->
+                <span>ESL Teacher</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="week1.html">Week 1</a></li>
+                    <li><a href="week2.html">Week 2</a></li>
+                    <li><a href="week3.html">Week 3</a></li>
+                    <li><a href="week4.html">Week 4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="intro-section">
+            <h1>Welcome to Ironing Out Creases - Brazil!</h1>
+            <p>This course is designed to work on common errors made especially by Brazilian students.</p>
+            <p>You will work on common errors and "iron out creases" to make your English as smooth and natural as possible!</p>
+            <p>Complete the lessons bellow and try to apply what you learn in your daily English conversations and writing!</p>
+            <p>Use the checkboxes to keep track of your progress!</p>
+            <p>Happy Learning!</p>
+
+            </section>
+        
+        <h2>Course Outline</h2>
+        
+        <div class="week-card">
+            <div class="week-header">
+                <h3>Week 1: Present Tense & Subject-Verb Agreement</h3>
+                <span class="completed-badge">0/3 Completed</span>
+            </div>
+            <div class="week-content">
+                <div class="lesson-item" data-lesson-id="w1-tuesday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Tuesday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Quick assessment of present tense errors</li>
+                                <li>Mini-drill on "I have" vs. "he/she has" patterns</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week1.html#tuesday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w1-thursday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Thursday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Error correction race with present tense sentences</li>
+                                <li>Focus on "I am" vs. "I have" distinctions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week1.html#thursday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w1-saturday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Saturday (15-20 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Review of present tense forms (5 min)</li>
+                                <li>Subject-verb agreement rules (5 min)</li>
+                                <li>Guided practice with common verbs (5-10 min)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week1.html#saturday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card">
+            <div class="week-header">
+                <h3>Week 2: Prepositions & Word Order</h3>
+                <span class="completed-badge">0/3 Completed</span>
+            </div>
+            <div class="week-content">
+                <div class="lesson-item" data-lesson-id="w2-tuesday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Tuesday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Preposition elimination game (find and remove unnecessary prepositions)</li>
+                                <li>Focus on "to" overuse</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week2.html#tuesday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w2-thursday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Thursday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Word order drill with time expressions</li>
+                                <li>Practice correct positioning of "already"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week2.html#thursday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w2-saturday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Saturday (15-20 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Portuguese vs. English preposition comparison (5 min)</li>
+                                <li>Common preposition errors by Portuguese speakers (5 min)</li>
+                                <li>Student reformulates sentences with correct prepositions (5-10 min)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week2.html#saturday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card">
+            <div class="week-header">
+                <h3>Week 3: Time Expressions & Verb Forms</h3>
+                <span class="completed-badge">0/3 Completed</span>
+            </div>
+            <div class="week-content">
+                <div class="lesson-item" data-lesson-id="w3-tuesday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Tuesday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Quick drill: "many/much" vs. "a lot of" time expressions</li>
+                                <li>Present perfect vs. simple past review</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week3.html#tuesday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w3-thursday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Thursday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Time expression flashcards</li>
+                                <li>Transforming sentences from Portuguese to English structure</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week3.html#thursday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w3-saturday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Saturday (15-20 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Time expressions review (5 min)</li>
+                                <li>Present perfect with time expressions (5 min)</li>
+                                <li>Student creates sentences about recent experiences (5-10 min)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week3.html#saturday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card">
+            <div class="week-header">
+                <h3>Week 4: Sentence Structure & Review</h3>
+                <span class="completed-badge">0/3 Completed</span>
+            </div>
+            <div class="week-content">
+                <div class="lesson-item" data-lesson-id="w4-tuesday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Tuesday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Sentence building activity with correct structures</li>
+                                <li>Focus on avoiding literal translations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week4.html#tuesday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w4-thursday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Thursday (5-10 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Error correction of sentences similar to student's text</li>
+                                <li>Apply rules learned in previous weeks</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week4.html#thursday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+                
+                <div class="lesson-item" data-lesson-id="w4-saturday">
+                    <div class="lesson-info">
+                        <div class="lesson-title">Saturday (15-20 min)</div>
+                        <div class="lesson-description">
+                            <ul>
+                                <li>Comprehensive review of all topics (5 min)</li>
+                                <li>Written practice with feedback (5 min)</li>
+                                <li>Role play using target structures in conversation (5-10 min)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lesson-checkbox">
+                        <div class="custom-checkbox"></div>
+                        <a href="week4.html#saturday" class="view-lesson-btn">View Lesson</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Function to load completed lessons from local storage
+        function loadCompletedLessons() {
+            const completedLessons = JSON.parse(localStorage.getItem('completedLessons')) || [];
+            
+            // Check each checkbox based on localStorage data
+            document.querySelectorAll('.lesson-item').forEach(lessonItem => {
+                const lessonId = lessonItem.dataset.lessonId;
+                const checkbox = lessonItem.querySelector('.custom-checkbox');
+                
+                if (completedLessons.includes(lessonId)) {
+                    checkbox.classList.add('checked');
+                }
+            });
+            
+            // Update week completion badges
+            updateWeekCompletionBadges();
+        }
+        
+        // Function to update the week completion badges
+        function updateWeekCompletionBadges() {
+            const weeks = ['w1', 'w2', 'w3', 'w4'];
+            
+            weeks.forEach((weekPrefix, index) => {
+                const weekCard = document.querySelectorAll('.week-card')[index];
+                const weekItems = document.querySelectorAll(`[data-lesson-id^="${weekPrefix}"]`);
+                const completedItems = document.querySelectorAll(`[data-lesson-id^="${weekPrefix}"] .custom-checkbox.checked`);
+                
+                const badge = weekCard.querySelector('.completed-badge');
+                badge.textContent = `${completedItems.length}/${weekItems.length} Completed`;
+            });
+        }
+        
+        // Function to toggle lesson completion
+        function toggleLessonCompletion(checkbox, lessonId) {
+            let completedLessons = JSON.parse(localStorage.getItem('completedLessons')) || [];
+            
+            if (checkbox.classList.contains('checked')) {
+                // Unchecking the lesson
+                checkbox.classList.remove('checked');
+                completedLessons = completedLessons.filter(id => id !== lessonId);
+            } else {
+                // Checking the lesson
+                checkbox.classList.add('checked');
+                if (!completedLessons.includes(lessonId)) {
+                    completedLessons.push(lessonId);
+                }
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('completedLessons', JSON.stringify(completedLessons));
+            
+            // Update week completion badges
+            updateWeekCompletionBadges();
+        }
+        
+        // Add event listeners to checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load completed lessons from localStorage
+            loadCompletedLessons();
+            
+            // Add click event listeners to checkboxes
+            document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('click', function() {
+                    const lessonItem = this.closest('.lesson-item');
+                    const lessonId = lessonItem.dataset.lessonId;
+                    toggleLessonCompletion(this, lessonId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
